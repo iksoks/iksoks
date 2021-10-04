@@ -33,6 +33,7 @@ data class IksOks(
     private fun isWinningMove(x: Int, y: Int, move: Int): Boolean {
         if (isRowWinning(x, move)) return true
         if (isColumnWinning(y, move)) return true
+        if (isDiagonalWinning(x, y, move)) return true
 
         return false
     }
@@ -56,6 +57,20 @@ data class IksOks(
             }
             if (i == BOARD_SIZE - 1) {
                 return true
+            }
+        }
+        return false
+    }
+
+    private fun isDiagonalWinning(x: Int, y: Int, move: Int): Boolean {
+        if (x == y) {
+            for (i in 0 until BOARD_SIZE) {
+                if (matrix[i][i] != move) {
+                    break
+                }
+                if (i == BOARD_SIZE - 1) {
+                    return true
+                }
             }
         }
         return false

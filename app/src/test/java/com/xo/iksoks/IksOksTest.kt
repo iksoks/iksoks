@@ -156,6 +156,19 @@ class IksOksTest{
 
         }
 
+        @Test
+        fun shouldPlayThreeXonDiagonalForTheWin(){
+            iksOks.setup()
+            iksOks.play(0,0) //X
+            iksOks.play(1,0) //O
+            iksOks.play(1,1) //X
+            iksOks.play(0,2) //O
+            iksOks.play(2,2) //X
+
+            assertThat(iksOks.gameWon).isTrue()
+            assertThat(iksOks.xPlaying).isTrue()
+        }
+
 
     }
 }
