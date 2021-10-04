@@ -49,5 +49,21 @@ class IksOksTest{
             assertThat(iksOks.matrix[2]).hasSize(3)
         }
 
+        @Test
+        fun shouldChangeMatrixWhenFirstSquareIsPlayed(){
+            iksOks.setup()
+            iksOks.play(0,0)
+
+            assertThat(iksOks.matrix[0][0]).isEqualTo(1)
+        }
+
+        @Test
+        fun shouldChangeMatrixWhenLastSquareIsPlayed(){
+            iksOks.setup()
+            iksOks.play(2,2)
+
+            assertThat(iksOks.matrix[2][2]).isEqualTo(1)
+        }
+
     }
 }
