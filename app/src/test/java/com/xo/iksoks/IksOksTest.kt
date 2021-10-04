@@ -55,7 +55,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(0,0)
 
-            assertThat(iksOks.matrix[0][0]).isEqualTo(O.value)
+            assertThat(iksOks.matrix[0][0]).isEqualTo(X.value)
         }
 
         @Test
@@ -63,7 +63,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(2,2)
 
-            assertThat(iksOks.matrix[2][2]).isEqualTo(O.value)
+            assertThat(iksOks.matrix[2][2]).isEqualTo(X.value)
         }
 
         @Test

@@ -11,6 +11,7 @@ data class IksOks(
 
     fun setup() {
         gameWon = false
+        xPlaying = true
         matrix = generateMatrix()
     }
 
