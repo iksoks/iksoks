@@ -141,6 +141,20 @@ class IksOksTest{
             assertThat(iksOks.gameWon).isTrue()
         }
 
+        @Test
+        fun shouldPlayThreeOOnColumnTwoForOToWin(){
+            iksOks.setup()
+            iksOks.play(2,2) //X
+            iksOks.play(1,0) //O
+            iksOks.play(0,1) //X
+            iksOks.play(1,1) //O
+            iksOks.play(0,2) //X
+            iksOks.play(1,2) //O
+
+            assertThat(iksOks.gameWon).isTrue()
+            assertThat(iksOks.xPlaying).isFalse()
+
+        }
 
 
     }
