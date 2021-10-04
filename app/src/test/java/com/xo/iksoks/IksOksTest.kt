@@ -3,6 +3,7 @@ package com.xo.iksoks
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
+import com.xo.iksoks.Square.*
 
 class IksOksTest{
     class IksOksTest{
@@ -54,7 +55,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(0,0)
 
-            assertThat(iksOks.matrix[0][0]).isEqualTo(1)
+            assertThat(iksOks.matrix[0][0]).isEqualTo(X.value)
         }
 
         @Test
@@ -62,7 +63,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(2,2)
 
-            assertThat(iksOks.matrix[2][2]).isEqualTo(1)
+            assertThat(iksOks.matrix[2][2]).isEqualTo(X.value)
         }
 
         @Test
