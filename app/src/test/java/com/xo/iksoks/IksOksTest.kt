@@ -24,5 +24,10 @@ class IksOksTest{
             assertThat(iksOks.matrix).isEmpty()
         }
 
+        @Test
+        fun shouldInitializeMatrixSizeToThree(){
+            assertThat(Constants.BOARD_SIZE).isEqualTo(3)
+        }
+
     }
 }
