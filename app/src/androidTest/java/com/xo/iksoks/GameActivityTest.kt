@@ -62,9 +62,9 @@ class GameActivityTest{
     }
 
     @Test
-    fun shouldDisplaySquareWithText0(){
+    fun shouldDisplaySquareWithEmptyText(){
         composeAndroidTestRule
-            .onAllNodesWithText("0")
+            .onAllNodesWithText(Square.EMPTY.text)
             .assertCountEquals(9)
     }
 

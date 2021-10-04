@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.ui.theme.IksOksTheme
+import com.xo.iksoks.Square.*
 
 
 class GameActivity : ComponentActivity() {
@@ -58,10 +59,10 @@ class GameActivity : ComponentActivity() {
                                     onClick = {},
                                 ) {
                                     Text(
-                                        text = list[position].toString(),
+                                        text = setupSquareText(list[position]),
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 30.sp,
-                                        )
+                                    )
                                 }
                             }
                         }
@@ -84,4 +85,12 @@ class GameActivity : ComponentActivity() {
             }
         }
     }
+
+    private fun setupSquareText(
+        value: Int,
+    ) = when (value) {
+        X.value -> X.text
+        O.value -> O.text
+        else -> EMPTY.text
+    }.toString()
 }
