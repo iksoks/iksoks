@@ -77,7 +77,13 @@ class IksOksTest{
             assertThat(iksOks.xPlaying).isEqualTo(true)
         }
 
+        @Test
+        fun shouldChangePlayerWhenPlayIsDone(){
+            iksOks.setup()
+            iksOks.play(0,0)
 
+            assertThat(iksOks.xPlaying).isFalse()
+        }
 
     }
 }

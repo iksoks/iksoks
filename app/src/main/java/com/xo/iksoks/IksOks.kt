@@ -16,6 +16,7 @@ data class IksOks(
 
     fun play(x: Int, y: Int){
         matrix[x][y] = X.value
+        xPlaying = !xPlaying
     }
 
     private fun generateMatrix() = generateSequence {
