@@ -85,5 +85,14 @@ class IksOksTest{
             assertThat(iksOks.xPlaying).isFalse()
         }
 
+        @Test
+        fun shouldChangePlayerBackXPlayingWhenPlayedTwice(){
+            iksOks.setup()
+            iksOks.play(0,0)
+            iksOks.play(1,1)
+
+            assertThat(iksOks.xPlaying).isTrue()
+        }
+
     }
 }
