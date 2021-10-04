@@ -34,6 +34,8 @@ class GameActivity : ComponentActivity() {
 
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
+                        val list = remember { iksOks.matrix.flatten() }
+
                         LazyVerticalGrid(
                             modifier = Modifier.testTag("Matrix"),
                             cells = GridCells.Fixed(BOARD_SIZE),
@@ -43,7 +45,14 @@ class GameActivity : ComponentActivity() {
                                 end = 12.dp,
                                 bottom = 16.dp,
                             ),
-                        ) {}
+                        ) {
+                            items(list.size) { position ->
+                                Button(
+                                    modifier = Modifier.testTag("Square"),
+                                    onClick = {},
+                                ) {}
+                            }
+                        }
 
                         Button(
                             modifier = Modifier
