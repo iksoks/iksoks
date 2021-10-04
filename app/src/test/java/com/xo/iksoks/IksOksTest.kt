@@ -15,17 +15,17 @@ class IksOksTest{
         }
 
         @Test
-        fun shouldGameWonBeFalseOnSetup(){
+        fun shouldGameWonBeFalseOnCreation(){
             assertThat(iksOks.gameWon).isEqualTo(false)
         }
 
         @Test
-        fun shouldMatrixBeEmptyOnSetup(){
+        fun shouldMatrixBeEmptyOnCreation(){
             assertThat(iksOks.matrix).isEmpty()
         }
 
         @Test
-        fun shouldInitializeMatrixSizeToThree(){
+        fun shouldInitializeMatrixSizeToThreeOnCreation(){
             assertThat(Constants.BOARD_SIZE).isEqualTo(3)
         }
 
@@ -69,6 +69,14 @@ class IksOksTest{
         fun shouldInitializeXPlayingOnCreation(){
             assertThat(iksOks.xPlaying).isEqualTo(true)
         }
+
+        @Test
+        fun shouldInitializeXPlayingOnSetup(){
+            iksOks.setup()
+            assertThat(iksOks.xPlaying).isEqualTo(true)
+        }
+
+
 
     }
 }
