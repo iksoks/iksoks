@@ -19,7 +19,9 @@ data class IksOks(
         val move = isXOrO()
         matrix[x][y] = move
         gameWon = isWinningMove(x, y, move)
-        xPlaying = !xPlaying
+        if (!gameWon) {
+            xPlaying = !xPlaying
+        }
     }
 
     private fun generateMatrix() = generateSequence {
