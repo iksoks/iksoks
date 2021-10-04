@@ -181,6 +181,17 @@ class IksOksTest{
             assertThat(iksOks.gameWon).isTrue()
         }
 
+        @Test
+        fun shouldPlayThreeXonReverseDiagonalToWin(){
+            iksOks.setup()
+            iksOks.play(0,2) //X
+            iksOks.play(0,1) //O
+            iksOks.play(1,1) //X
+            iksOks.play(2,2) //O
+            iksOks.play(2,0) //X
+
+            assertThat(iksOks.gameWon).isTrue()
+        }
 
     }
 }
