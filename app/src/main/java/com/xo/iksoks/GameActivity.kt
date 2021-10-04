@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
@@ -16,7 +17,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.ui.theme.IksOksTheme
 
@@ -48,10 +51,17 @@ class GameActivity : ComponentActivity() {
                         ) {
                             items(list.size) { position ->
                                 Button(
-                                    modifier = Modifier.testTag("Square"),
+                                    modifier = Modifier
+                                        .testTag("Square")
+                                        .padding(4.dp)
+                                        .aspectRatio(1f),
                                     onClick = {},
                                 ) {
-                                    Text(text = position.toString())
+                                    Text(
+                                        text = position.toString(),
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 30.sp,
+                                        )
                                 }
                             }
                         }
