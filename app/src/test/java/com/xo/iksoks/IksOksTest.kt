@@ -35,5 +35,12 @@ class IksOksTest{
             assertThat(iksOks.gameWon).isEqualTo(false)
         }
 
+        @Test
+        fun shouldInitializeMatrixToThreeRowsThreeOnSetup(){
+            iksOks.setup()
+            assertThat(iksOks.matrix).hasSize(3)
+        }
+
+
     }
 }
