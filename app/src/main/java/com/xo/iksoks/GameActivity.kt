@@ -50,7 +50,9 @@ class GameActivity : ComponentActivity() {
                                 Button(
                                     modifier = Modifier.testTag("Square"),
                                     onClick = {},
-                                ) {}
+                                ) {
+                                    Text(text = position.toString())
+                                }
                             }
                         }
 

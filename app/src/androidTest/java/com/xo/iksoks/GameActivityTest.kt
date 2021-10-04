@@ -54,12 +54,27 @@ class GameActivityTest{
     }
 
     @Test
-    fun shouldDisplayNineButtonsInMatrix(){
+    fun shouldDisplayNineSquaresInMatrix(){
         composeAndroidTestRule
             .onAllNodesWithTag("Square")
             .assertCountEquals(9)
 
     }
+
+    @Test
+    fun shouldDisplaySquareWithText0(){
+        composeAndroidTestRule
+            .onNodeWithText("0")
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisplaySquareWithText8(){
+        composeAndroidTestRule
+            .onNodeWithText("8")
+            .assertIsDisplayed()
+    }
+
 
 
 }
