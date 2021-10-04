@@ -6,6 +6,7 @@ import com.xo.iksoks.Square.*
 data class IksOks(
     var gameWon: Boolean = false,
     var xPlaying: Boolean = true,
+    var isDraw: Boolean = false,
     var matrix: MutableList<MutableList<Int>> = mutableListOf(),
 ) {
 
@@ -90,4 +91,6 @@ data class IksOks(
         }
         return false
     }
+
+
 }

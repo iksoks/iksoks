@@ -205,5 +205,13 @@ class IksOksTest{
 
             assertThat(iksOks.gameWon).isTrue()
         }
+
+        @Test
+        fun shouldInitializeDrawOnCreation(){
+            iksOks.setup()
+
+            assertThat(iksOks.isDraw).isFalse()
+        }
+
     }
 }
