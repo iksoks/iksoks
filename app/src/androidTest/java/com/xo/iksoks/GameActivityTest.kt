@@ -64,15 +64,8 @@ class GameActivityTest{
     @Test
     fun shouldDisplaySquareWithText0(){
         composeAndroidTestRule
-            .onNodeWithText("0")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun shouldDisplaySquareWithText8(){
-        composeAndroidTestRule
-            .onNodeWithText("8")
-            .assertIsDisplayed()
+            .onAllNodesWithText("0")
+            .assertCountEquals(9)
     }
 
 

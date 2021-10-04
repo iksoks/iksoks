@@ -58,7 +58,7 @@ class GameActivity : ComponentActivity() {
                                     onClick = {},
                                 ) {
                                     Text(
-                                        text = position.toString(),
+                                        text = list[position].toString(),
                                         fontWeight = FontWeight.Bold,
                                         fontSize = 30.sp,
                                         )
