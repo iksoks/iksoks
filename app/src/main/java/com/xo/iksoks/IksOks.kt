@@ -31,6 +31,25 @@ data class IksOks(
     private fun isXOrO(): Int = if (xPlaying) X.value else O.value
 
     private fun isWinningMove(x: Int, y: Int, move: Int): Boolean {
+        if (isRowWinning(x, move)) return true
+        if (isColumnWinning(y, move)) return true
+
+        return false
+    }
+
+    private fun isColumnWinning(y: Int, move: Int): Boolean {
+        for (i in 0 until BOARD_SIZE) {
+            if (matrix[i][y] != move) {
+                break
+            }
+            if (i == BOARD_SIZE - 1) {
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun isRowWinning(x: Int, move: Int): Boolean {
         for (i in 0 until BOARD_SIZE) {
             if (matrix[x][i] != move) {
                 break
@@ -41,5 +60,4 @@ data class IksOks(
         }
         return false
     }
-
 }
