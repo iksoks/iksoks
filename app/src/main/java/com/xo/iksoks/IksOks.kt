@@ -6,13 +6,13 @@ import com.xo.iksoks.Square.*
 data class IksOks(
     var gameWon: Boolean = false,
     var xPlaying: Boolean = true,
-    var isDraw: Boolean = false,
+    var draw: Boolean = false,
     var matrix: MutableList<MutableList<Int>> = mutableListOf(),
 ) {
 
     fun setup() {
         gameWon = false
-        isDraw = false
+        draw = false
         xPlaying = true
         matrix = generateMatrix()
     }

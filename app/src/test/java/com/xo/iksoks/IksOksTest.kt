@@ -210,14 +210,14 @@ class IksOksTest{
         fun shouldInitializeDrawOnCreation(){
             iksOks.setup()
 
-            assertThat(iksOks.isDraw).isFalse()
+            assertThat(iksOks.draw).isFalse()
         }
 
         @Test
         fun shouldInitializeDrawOnSetup(){
             iksOks.setup()
 
-            assertThat(iksOks.isDraw).isFalse()
+            assertThat(iksOks.draw).isFalse()
         }
 
     }
