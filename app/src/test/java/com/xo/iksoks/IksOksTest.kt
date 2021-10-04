@@ -41,6 +41,13 @@ class IksOksTest{
             assertThat(iksOks.matrix).hasSize(3)
         }
 
+        @Test
+        fun shouldInitializeMatrixToThreeColumnsOnSetup(){
+            iksOks.setup()
+            assertThat(iksOks.matrix[0]).hasSize(3)
+            assertThat(iksOks.matrix[1]).hasSize(3)
+            assertThat(iksOks.matrix[2]).hasSize(3)
+        }
 
     }
 }
