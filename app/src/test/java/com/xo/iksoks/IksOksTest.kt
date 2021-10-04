@@ -65,5 +65,10 @@ class IksOksTest{
             assertThat(iksOks.matrix[2][2]).isEqualTo(1)
         }
 
+        @Test
+        fun shouldInitializeXPlayingOnCreation(){
+            assertThat(iksOks.xPlaying).isEqualTo(true)
+        }
+
     }
 }

@@ -4,6 +4,7 @@ import com.xo.iksoks.Constants.BOARD_SIZE
 
 data class IksOks(
     var gameWon: Boolean = false,
+    var xPlaying: Boolean = true,
     var matrix: MutableList<MutableList<Int>> = mutableListOf()
 ){
 
