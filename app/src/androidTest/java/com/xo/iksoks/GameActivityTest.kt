@@ -49,5 +49,12 @@ class GameActivityTest{
             .performClick()
     }
 
+    @Test
+    fun shouldDisplayMatrix(){
+        composeAndroidTestRule
+            .onNodeWithTag("Matrix")
+            .assertIsDisplayed()
+    }
+
 
 }
