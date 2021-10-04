@@ -55,7 +55,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(0,0)
 
-            assertThat(iksOks.matrix[0][0]).isEqualTo(X.value)
+            assertThat(iksOks.matrix[0][0]).isEqualTo(O.value)
         }
 
         @Test
@@ -63,7 +63,7 @@ class IksOksTest{
             iksOks.setup()
             iksOks.play(2,2)
 
-            assertThat(iksOks.matrix[2][2]).isEqualTo(X.value)
+            assertThat(iksOks.matrix[2][2]).isEqualTo(O.value)
         }
 
         @Test
@@ -92,6 +92,15 @@ class IksOksTest{
             iksOks.play(1,1)
 
             assertThat(iksOks.xPlaying).isTrue()
+        }
+
+        @Test
+        fun shouldSetOtoPlayOnSecondPlay(){
+            iksOks.setup()
+            iksOks.play(0,0)
+            iksOks.play(1,1)
+
+            assertThat(iksOks.matrix[1][1]).isEqualTo(O.value)
         }
 
     }

@@ -15,11 +15,14 @@ data class IksOks(
     }
 
     fun play(x: Int, y: Int){
-        matrix[x][y] = X.value
+        matrix[x][y] = isXOrO()
         xPlaying = !xPlaying
     }
 
     private fun generateMatrix() = generateSequence {
         generateSequence { EMPTY.value }.take(BOARD_SIZE).toMutableList()
     }.take(BOARD_SIZE).toMutableList()
+
+    private fun isXOrO(): Int = if (xPlaying) X.value else O.value
+
 }
