@@ -29,5 +29,11 @@ class IksOksTest{
             assertThat(Constants.BOARD_SIZE).isEqualTo(3)
         }
 
+        @Test
+        fun shouldInitializeGameWonToFalseOnSetup(){
+            iksOks.setup()
+            assertThat(iksOks.gameWon).isEqualTo(false)
+        }
+
     }
 }
