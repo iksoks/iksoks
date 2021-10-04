@@ -263,6 +263,19 @@ class IksOksTest{
             assertThat(iksOks.draw).isTrue()
         }
 
+        @Test
+        fun shouldSetDrawToFalseAfterGameIsWon(){
+            iksOks.setup()
+            iksOks.play(0,0) //X
+            iksOks.play(1,0) //O
+            iksOks.play(0,1) //X
+            iksOks.play(1,1) //O
+            iksOks.play(0,2) //X
+
+            assertThat(iksOks.gameWon).isTrue()
+            assertThat(iksOks.draw).isFalse()
+        }
+
 
 
     }

@@ -22,11 +22,11 @@ data class IksOks(
         matrix[x][y] = move
 
         gameWon = isWinningMove(x, y, move)
-        draw = isDraw()
 
-        if (!gameWon) {
-            xPlaying = !xPlaying
-        }
+        if (gameWon) return
+
+        draw = isDraw()
+        xPlaying = !xPlaying
     }
 
     private fun generateMatrix() = generateSequence {
