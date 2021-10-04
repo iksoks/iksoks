@@ -17,7 +17,7 @@ class GameActivityTest{
     fun shouldDisplayTextGameWonFalseOnCreation(){
         composeAndroidTestRule
             .onNodeWithText("Game won: false")
-            .assertExists()
+            .assertIsDisplayed()
     }
 
     @Test
@@ -31,7 +31,7 @@ class GameActivityTest{
     fun shouldDisplayButtonOnCreation(){
         composeAndroidTestRule
             .onNodeWithTag("Button")
-            .assertExists()
+            .assertIsDisplayed()
     }
 
     @Test
