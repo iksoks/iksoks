@@ -17,7 +17,7 @@ class IksOksTest{
 
         @Test
         fun shouldGameWonBeFalseOnCreation(){
-            assertThat(iksOks.gameWon).isEqualTo(false)
+            assertThat(iksOks.gameWon).isFalse()
         }
 
         @Test
@@ -33,7 +33,7 @@ class IksOksTest{
         @Test
         fun shouldInitializeGameWonToFalseOnSetup(){
             iksOks.setup()
-            assertThat(iksOks.gameWon).isEqualTo(false)
+            assertThat(iksOks.gameWon).isFalse()
         }
 
         @Test
@@ -68,13 +68,13 @@ class IksOksTest{
 
         @Test
         fun shouldInitializeXPlayingOnCreation(){
-            assertThat(iksOks.xPlaying).isEqualTo(true)
+            assertThat(iksOks.xPlaying).isTrue()
         }
 
         @Test
         fun shouldInitializeXPlayingOnSetup(){
             iksOks.setup()
-            assertThat(iksOks.xPlaying).isEqualTo(true)
+            assertThat(iksOks.xPlaying).isTrue()
         }
 
         @Test
