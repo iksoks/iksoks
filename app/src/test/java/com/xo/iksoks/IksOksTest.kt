@@ -220,5 +220,50 @@ class IksOksTest{
             assertThat(iksOks.draw).isFalse()
         }
 
+        @Test
+        fun shouldSetDrawToFalseAfterOneMove(){
+            iksOks.setup()
+
+            iksOks.play(2,0) //X
+
+            assertThat(iksOks.draw).isFalse()
+        }
+
+        @Test
+        fun shouldSetDrawToTrueAfterNineMovesAsDraw(){
+            iksOks.setup()
+
+            iksOks.play(0,0) //X
+            iksOks.play(0,1) //O
+            iksOks.play(0,2) //X
+            iksOks.play(1,1) //O
+            iksOks.play(1,0) //X
+            iksOks.play(1,2) //O
+            iksOks.play(2,2) //X
+            iksOks.play(2,0) //O
+            iksOks.play(2,1) //X
+
+            assertThat(iksOks.draw).isTrue()
+        }
+
+        @Test
+        fun shouldSetDrawToTrueAfterNineOtherMovesAsDraw(){
+            iksOks.setup()
+
+            iksOks.play(0,1) //X
+            iksOks.play(0,0) //O
+            iksOks.play(0,2) //X
+            iksOks.play(1,1) //O
+            iksOks.play(1,2) //X
+            iksOks.play(1,0) //O
+            iksOks.play(2,0) //X
+            iksOks.play(2,2) //O
+            iksOks.play(2,1) //X
+
+            assertThat(iksOks.draw).isTrue()
+        }
+
+
+
     }
 }

@@ -20,7 +20,10 @@ data class IksOks(
     fun play(x: Int, y: Int) {
         val move = isXOrO()
         matrix[x][y] = move
+
         gameWon = isWinningMove(x, y, move)
+        draw = isDraw()
+
         if (!gameWon) {
             xPlaying = !xPlaying
         }
@@ -40,6 +43,8 @@ data class IksOks(
 
         return false
     }
+
+    private fun isDraw() = matrix.flatten().none { it == Square.EMPTY.value }
 
     private fun isColumnWinning(y: Int, move: Int): Boolean {
         for (i in 0 until BOARD_SIZE) {
