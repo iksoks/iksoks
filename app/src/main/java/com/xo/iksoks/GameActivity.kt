@@ -32,7 +32,9 @@ class GameActivity : ComponentActivity() {
                                 .padding(16.dp)
                                 .testTag("Button"),
                             onClick = {},
-                        ){}
+                        ){
+                            Text(text = "Reset")
+                        }
 
                         Text(
                             text = "Game won: ${iksOks.gameWon}",
