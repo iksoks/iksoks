@@ -12,6 +12,7 @@ data class IksOks(
 
     fun setup() {
         gameWon = false
+        isDraw = false
         xPlaying = true
         matrix = generateMatrix()
     }
