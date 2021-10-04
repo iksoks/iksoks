@@ -19,5 +19,10 @@ class IksOksTest{
             assertThat(iksOks.gameWon).isEqualTo(false)
         }
 
+        @Test
+        fun shouldMatrixBeEmptyOnSetup(){
+            assertThat(iksOks.matrix).isEmpty()
+        }
+
     }
 }
