@@ -14,17 +14,10 @@ class GameActivityTest{
 
 
     @Test
-    fun shouldDisplayTextGameWonFalseOnCreation(){
+    fun shouldDisplayTextPleaseChooseASquareOnCreation(){
         composeAndroidTestRule
-            .onNodeWithText("Game won: false")
+            .onNodeWithText("Please choose a square.")
             .assertIsDisplayed()
-    }
-
-    @Test
-    fun shouldAssertTextGameWonTrueDoesNotExist(){
-        composeAndroidTestRule
-            .onNodeWithText("Game won: true")
-            .assertDoesNotExist()
     }
 
     @Test
@@ -56,13 +49,13 @@ class GameActivityTest{
     }
 
     @Test
-    fun shouldDisplayTextGameWonFalseOnResetClicked(){
+    fun shouldDisplayPleaseChooseASquareOnResetClicked(){
         composeAndroidTestRule
             .onNodeWithTag("Button")
             .performClick()
 
         composeAndroidTestRule
-            .onNodeWithText("Game won: false")
+            .onNodeWithText("Please choose a square.")
             .assertIsDisplayed()
     }
 
@@ -111,7 +104,7 @@ class GameActivityTest{
         winInRow0()
 
         composeAndroidTestRule
-            .onNodeWithText("Game won: true")
+            .onNodeWithText("${X.name} WON!")
             .assertIsDisplayed()
     }
 
@@ -135,6 +128,53 @@ class GameActivityTest{
             .assertIsNotEnabled()
     }
 
+    @Test
+    fun shouldDisplayDrawAfterNinePlaysAsDraw(){
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("1")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("2")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("5")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("3")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("6")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("4")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("8")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("7")
+            .performClick()
+
+
+        composeAndroidTestRule
+            .onNodeWithText("DRAW!")
+            .assertIsDisplayed()
+
+    }
+
+
+
     private fun winInRow0() {
 
         composeAndroidTestRule
@@ -157,6 +197,4 @@ class GameActivityTest{
             .onNodeWithTag("2")
             .performClick()
     }
-
-
 }

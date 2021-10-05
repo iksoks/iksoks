@@ -15,6 +15,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +24,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants.BOARD_SIZE
+import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.domain.Square.*
 import com.xo.iksoks.ui.theme.IksOksTheme
 import com.xo.iksoks.ui.viewmodel.GameViewModel
@@ -64,7 +66,7 @@ class GameActivity : ComponentActivity() {
                         }
 
                         Text(
-                            text = "Game won: ${iksOks.value.gameWon}",
+                            text = setupMessage(iksOks),
                             modifier = Modifier.padding(16.dp)
                         )
                     }
@@ -72,6 +74,14 @@ class GameActivity : ComponentActivity() {
             }
         }
     }
+
+    @Composable
+    private fun setupMessage(iksOks: MutableState<IksOks>) =
+        when {
+            iksOks.value.gameWon -> (if (iksOks.value.xPlaying) X.name else O.name) + " WON!"
+            iksOks.value.draw -> "DRAW!"
+            else -> "Please choose a square."
+        }
 
 }
 
