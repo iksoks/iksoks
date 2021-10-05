@@ -164,6 +164,14 @@ class GameActivityTest {
 
     }
 
+    @Test
+    fun shouldDisplayAppNameInHeader(){
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.app_name))
+                .assertIsDisplayed()
+        }
+    }
+
 
     private fun winInRow0() {
 

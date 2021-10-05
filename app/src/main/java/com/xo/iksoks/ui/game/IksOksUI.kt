@@ -7,9 +7,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.remember
@@ -31,23 +29,28 @@ import com.xo.iksoks.ui.viewmodel.GameViewModel
 fun IksOksGame(
     viewModel: GameViewModel,
 ) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Scaffold(
+        topBar = { Header() }
+    ) {
 
-        val iksOks = remember { viewModel.iksOks }
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-        Matrix(
-            list = iksOks.value.matrix.flatten(),
-            gameWon = iksOks.value.gameWon,
-        ) { position ->
-            viewModel.play(position = position)
+            val iksOks = remember { viewModel.iksOks }
+
+            Matrix(
+                list = iksOks.value.matrix.flatten(),
+                gameWon = iksOks.value.gameWon,
+            ) { position ->
+                viewModel.play(position = position)
+            }
+
+            Reset(viewModel)
+
+            Text(
+                text = setupMessage(iksOks),
+                modifier = Modifier.padding(16.dp)
+            )
         }
-
-        Reset(viewModel)
-
-        Text(
-            text = setupMessage(iksOks),
-            modifier = Modifier.padding(16.dp)
-        )
     }
 }
 
@@ -70,7 +73,8 @@ private fun Reset(
 @Composable
 private fun setupMessage(iksOks: MutableState<IksOks>): String {
     return when {
-        iksOks.value.gameWon -> stringResource(id = R.string.gameWon, (if (iksOks.value.xPlaying) X.name else O.name))
+        iksOks.value.gameWon -> stringResource(id = R.string.gameWon,
+            (if (iksOks.value.xPlaying) X.name else O.name))
         iksOks.value.draw -> stringResource(R.string.draw)
         else -> stringResource(R.string.please_choose_square)
     }
@@ -114,6 +118,15 @@ fun Matrix(
             }
         }
     }
+}
+
+@Composable
+fun Header() {
+    TopAppBar(
+        title = {
+            Text(text = stringResource(id = R.string.app_name))
+        },
+    )
 }
 
 @Composable
