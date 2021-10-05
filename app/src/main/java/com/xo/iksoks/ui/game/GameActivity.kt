@@ -22,9 +22,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants.BOARD_SIZE
-import com.xo.iksoks.domain.IksOks
-import com.xo.iksoks.ui.theme.IksOksTheme
 import com.xo.iksoks.domain.Square.*
+import com.xo.iksoks.ui.theme.IksOksTheme
 import com.xo.iksoks.ui.viewmodel.GameViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -36,16 +35,15 @@ class GameActivity : ComponentActivity() {
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val game = IksOks().apply { setup() }
 
         setContent {
             IksOksTheme {
                 Surface {
-                    val iksOks = remember { game }
+                    val iksOks = viewModel.iksOks
 
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                        val list = remember { iksOks.matrix.flatten() }
+                        val list = remember { iksOks.value.matrix.flatten() }
 
                         LazyVerticalGrid(
                             modifier = Modifier.testTag("Matrix"),
@@ -84,7 +82,7 @@ class GameActivity : ComponentActivity() {
                         }
 
                         Text(
-                            text = "Game won: ${iksOks.gameWon}",
+                            text = "Game won: ${iksOks.value.gameWon}",
                             modifier = Modifier.padding(16.dp)
                         )
                     }
