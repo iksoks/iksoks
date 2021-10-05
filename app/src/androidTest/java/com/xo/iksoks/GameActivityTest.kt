@@ -7,120 +7,126 @@ import com.xo.iksoks.domain.Square.*
 import org.junit.Rule
 import org.junit.Test
 
-class GameActivityTest{
+class GameActivityTest {
 
     @get:Rule
     val composeAndroidTestRule = createAndroidComposeRule<GameActivity>()
 
 
     @Test
-    fun shouldDisplayTextPleaseChooseASquareOnCreation(){
-        composeAndroidTestRule
-            .onNodeWithText("Please choose a square.")
-            .assertIsDisplayed()
+    fun shouldDisplayTextPleaseChooseASquareOnCreation() {
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.please_choose_square))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldDisplayButtonOnCreation(){
-        composeAndroidTestRule
-            .onNodeWithTag("Button")
-            .assertIsDisplayed()
+    fun shouldDisplayButtonOnCreation() {
+        composeAndroidTestRule.apply {
+            onNodeWithTag(activity.getString(R.string.button))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldDisplayResetButtonText(){
-        composeAndroidTestRule
-            .onNodeWithText("Reset")
-            .assertIsDisplayed()
+    fun shouldDisplayResetButtonText() {
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.reset))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun  shouldCanProperlyClickOnButton(){
-        composeAndroidTestRule
-            .onNodeWithTag("Button")
-            .performClick()
+    fun shouldCanProperlyClickOnButton() {
+        composeAndroidTestRule.apply {
+            onNodeWithTag(activity.getString(R.string.button))
+                .performClick()
+        }
     }
 
     @Test
-    fun shouldDisplayMatrix(){
-        composeAndroidTestRule
-            .onNodeWithTag("Matrix")
-            .assertIsDisplayed()
+    fun shouldDisplayMatrix() {
+        composeAndroidTestRule.apply {
+            onNodeWithTag(activity.getString(R.string.matrix))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldDisplayPleaseChooseASquareOnResetClicked(){
-        composeAndroidTestRule
-            .onNodeWithTag("Button")
-            .performClick()
+    fun shouldDisplayPleaseChooseASquareOnResetClicked() {
+        composeAndroidTestRule.apply {
+            onNodeWithTag(activity.getString(R.string.button))
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithText("Please choose a square.")
-            .assertIsDisplayed()
+            onNodeWithText(activity.getString(R.string.please_choose_square))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldDisplaySquareWithTag0(){
+    fun shouldDisplaySquareWithTag0() {
         composeAndroidTestRule
             .onNodeWithTag("0")
             .assertIsDisplayed()
     }
 
     @Test
-    fun shouldDisplaySquareWithTag8(){
+    fun shouldDisplaySquareWithTag8() {
         composeAndroidTestRule
             .onNodeWithTag("8")
             .assertIsDisplayed()
     }
 
     @Test
-    fun shouldDisplayXWhenClickedOnSquare0(){
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
+    fun shouldDisplayXWhenClickedOnSquare0() {
+        composeAndroidTestRule.apply {
+            onNodeWithTag("0")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithText(X.text)
-            .assertIsDisplayed()
+            onNodeWithText(X.text)
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldDisplayOWhenClickedOnSecondSquare(){
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
+    fun shouldDisplayOWhenClickedOnSecondSquare() {
+        composeAndroidTestRule.apply {
 
-        composeAndroidTestRule
-            .onNodeWithTag("1")
-            .performClick()
+            onNodeWithTag("0")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithText(O.text)
-            .assertIsDisplayed()
+            onNodeWithTag("1")
+                .performClick()
+
+            onNodeWithText(O.text)
+                .assertIsDisplayed()
+        }
     }
 
     @Test
-    fun shouldWinInRowWhenXPlaysOnFirstRow(){
+    fun shouldWinInRowWhenXPlaysOnFirstRow() {
         winInRow0()
 
-        composeAndroidTestRule
-            .onNodeWithText("${X.name} WON!")
-            .assertIsDisplayed()
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.gameWon, X.text))
+                .assertIsDisplayed()
+        }
     }
 
     @Test
     fun shouldDisableSquareWhenAlreadyClicked() {
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
+        composeAndroidTestRule.apply {
+            onNodeWithTag("0")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .assertIsNotEnabled()
+            onNodeWithTag("0")
+                .assertIsNotEnabled()
+        }
     }
 
     @Test
-    fun shouldDisableAllSquaresOnGameWon(){
+    fun shouldDisableAllSquaresOnGameWon() {
         winInRow0()
 
         composeAndroidTestRule
@@ -129,72 +135,63 @@ class GameActivityTest{
     }
 
     @Test
-    fun shouldDisplayDrawAfterNinePlaysAsDraw(){
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
+    fun shouldDisplayDrawAfterNinePlaysAsDraw() {
+        composeAndroidTestRule.apply {
 
-        composeAndroidTestRule
-            .onNodeWithTag("1")
-            .performClick()
+            onNodeWithTag("0")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("2")
-            .performClick()
+            onNodeWithTag("1")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("5")
-            .performClick()
+            onNodeWithTag("2")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("3")
-            .performClick()
+            onNodeWithTag("5")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("6")
-            .performClick()
+            onNodeWithTag("3")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("4")
-            .performClick()
+            onNodeWithTag("6")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("8")
-            .performClick()
+            onNodeWithTag("4")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("7")
-            .performClick()
+            onNodeWithTag("8")
+                .performClick()
+
+            onNodeWithTag("7")
+                .performClick()
 
 
-        composeAndroidTestRule
-            .onNodeWithText("DRAW!")
-            .assertIsDisplayed()
-
+            onNodeWithText(activity.getString(R.string.draw))
+                .assertIsDisplayed()
+        }
     }
-
-
 
     private fun winInRow0() {
 
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
+        composeAndroidTestRule.apply {
 
-        composeAndroidTestRule
-            .onNodeWithTag("3")
-            .performClick()
+            onNodeWithTag("0")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("1")
-            .performClick()
+            onNodeWithTag("3")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("4")
-            .performClick()
+            onNodeWithTag("1")
+                .performClick()
 
-        composeAndroidTestRule
-            .onNodeWithTag("2")
-            .performClick()
+            onNodeWithTag("4")
+                .performClick()
+
+            onNodeWithTag("2")
+                .performClick()
+        }
     }
+
 }
+
+
