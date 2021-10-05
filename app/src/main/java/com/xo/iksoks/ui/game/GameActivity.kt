@@ -47,6 +47,7 @@ class GameActivity : ComponentActivity() {
 
                         Matrix(
                             list = iksOks.value.matrix.flatten(),
+                            gameWon = iksOks.value.gameWon,
                         ) { position ->
                             viewModel.play(position = position)
                         }
@@ -78,6 +79,7 @@ class GameActivity : ComponentActivity() {
 @Composable
 fun Matrix(
     list: List<Int>,
+    gameWon: Boolean,
     onClick: (Int) -> Unit,
 ) {
     LazyVerticalGrid(
@@ -99,7 +101,7 @@ fun Matrix(
                 onClick = {
                     onClick(position)
                 },
-                enabled = list[position] == EMPTY.value,
+                enabled = list[position] == EMPTY.value && !gameWon,
             ) {
                 Text(
                     text = setupSquareText(list, position),

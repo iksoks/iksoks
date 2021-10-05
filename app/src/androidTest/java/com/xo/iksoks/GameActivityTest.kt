@@ -108,6 +108,35 @@ class GameActivityTest{
 
     @Test
     fun shouldWinInRowWhenXPlaysOnFirstRow(){
+        winInRow0()
+
+        composeAndroidTestRule
+            .onNodeWithText("Game won: true")
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisableSquareWhenAlreadyClicked() {
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .assertIsNotEnabled()
+    }
+
+    @Test
+    fun shouldDisableAllSquaresOnGameWon(){
+        winInRow0()
+
+        composeAndroidTestRule
+            .onNodeWithTag("6")
+            .assertIsNotEnabled()
+    }
+
+    private fun winInRow0() {
+
         composeAndroidTestRule
             .onNodeWithTag("0")
             .performClick()
@@ -127,21 +156,6 @@ class GameActivityTest{
         composeAndroidTestRule
             .onNodeWithTag("2")
             .performClick()
-
-        composeAndroidTestRule
-            .onNodeWithText("Game won: true")
-            .assertIsDisplayed()
-    }
-
-    @Test
-    fun shouldDisableSquareWhenAlreadyClicked() {
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .performClick()
-
-        composeAndroidTestRule
-            .onNodeWithTag("0")
-            .assertIsNotEnabled()
     }
 
 
