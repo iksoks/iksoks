@@ -1,16 +1,19 @@
 package com.xo.iksoks.domain
 
-import com.xo.iksoks.Constants.BOARD_SIZE
+import android.os.Parcelable
 import com.xo.iksoks.domain.Square.*
+import com.xo.iksoks.domain.Square.Companion.BOARD_SIZE
+import kotlinx.parcelize.Parcelize
 
 typealias Matrix = MutableList<MutableList<Int>>
 
+@Parcelize
 data class IksOks(
     var gameWon: Boolean = false,
     var xPlaying: Boolean = true,
     var draw: Boolean = false,
     var matrix: Matrix = mutableListOf(),
-) {
+) : Parcelable {
 
     fun setup() {
         gameWon = false
@@ -46,7 +49,7 @@ data class IksOks(
         return false
     }
 
-    private fun isDraw() = matrix.flatten().none { it == Square.EMPTY.value }
+    private fun isDraw() = matrix.flatten().none { it == EMPTY.value }
 
     private fun isColumnWinning(y: Int, move: Int): Boolean {
         for (i in 0 until BOARD_SIZE) {

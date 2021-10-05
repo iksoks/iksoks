@@ -21,10 +21,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.domain.Square.*
-import com.xo.iksoks.Constants
 import com.xo.iksoks.R
 import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.domain.Square
+import com.xo.iksoks.domain.Square.Companion.BOARD_SIZE
 import com.xo.iksoks.ui.viewmodel.GameViewModel
 
 @Composable
@@ -86,7 +86,7 @@ fun Matrix(
 ) {
     LazyVerticalGrid(
         modifier = Modifier.testTag(stringResource(R.string.matrix)),
-        cells = GridCells.Fixed(Constants.BOARD_SIZE),
+        cells = GridCells.Fixed(BOARD_SIZE),
         contentPadding = PaddingValues(
             start = 12.dp,
             top = 16.dp,

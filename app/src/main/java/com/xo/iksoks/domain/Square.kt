@@ -9,6 +9,7 @@ enum class Square(
     O(2, "O");
 
     companion object {
+        const val BOARD_SIZE = 3
         fun fromInt(value: Int) = values().first { it.value == value }
     }
 

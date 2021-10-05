@@ -2,24 +2,26 @@ package com.xo.iksoks.ui.viewmodel
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.domain.IksOks
+import com.xo.iksoks.domain.Square.Companion.BOARD_SIZE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class GameViewModel @Inject constructor() : ViewModel() {
+class GameViewModel @Inject constructor(
+    private val savedStateHandle: SavedStateHandle,
+) : ViewModel() {
 
-    val iksOks: MutableState<IksOks> = mutableStateOf(IksOks())
-
-    init {
-        setupMatrix()
-    }
+    val iksOks: MutableState<IksOks> = mutableStateOf(
+        savedStateHandle.get<IksOks>(CURRENT_IKSOKS) ?: IksOks().apply { setup() }
+    )
 
     fun setupMatrix() {
         iksOks.value = IksOks().apply {
             setup()
+            savedStateHandle.set(CURRENT_IKSOKS, this)
         }
     }
 
@@ -36,6 +38,13 @@ class GameViewModel @Inject constructor() : ViewModel() {
             play(x, y)
         }
 
+
         iksOks.value = newIksOks
+        savedStateHandle.set(CURRENT_IKSOKS, newIksOks)
     }
+
+    companion object {
+        private const val CURRENT_IKSOKS = "current_iksoks"
+    }
+
 }
