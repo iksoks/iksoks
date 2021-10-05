@@ -91,5 +91,20 @@ class GameActivityTest{
             .assertIsDisplayed()
     }
 
+    @Test
+    fun shouldDisplayOWhenClickedOnSecondSquare(){
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("1")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithText(O.text)
+            .assertIsDisplayed()
+    }
+
 
 }
