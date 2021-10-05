@@ -29,18 +29,18 @@ class GameViewModel @Inject constructor(
         val x = position / BOARD_SIZE
         val y = position % BOARD_SIZE
 
-        val newIksOks = IksOks(
+        IksOks(
             xPlaying = iksOks.value.xPlaying,
             draw = iksOks.value.draw,
             gameWon = iksOks.value.gameWon,
             matrix = iksOks.value.matrix
         ).apply {
             play(x, y)
+        }.also {
+            iksOks.value = it
+            savedStateHandle.set(CURRENT_IKSOKS, it)
         }
 
-
-        iksOks.value = newIksOks
-        savedStateHandle.set(CURRENT_IKSOKS, newIksOks)
     }
 
     companion object {
