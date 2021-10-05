@@ -1,4 +1,4 @@
-package com.xo.iksoks
+package com.xo.iksoks.ui.game
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -21,8 +21,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants.BOARD_SIZE
+import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.ui.theme.IksOksTheme
-import com.xo.iksoks.Square.*
+import com.xo.iksoks.domain.Square.*
 
 
 class GameActivity : ComponentActivity() {

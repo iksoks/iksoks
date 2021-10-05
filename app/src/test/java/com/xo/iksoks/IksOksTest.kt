@@ -3,7 +3,8 @@ package com.xo.iksoks
 import com.google.common.truth.Truth.assertThat
 import org.junit.Before
 import org.junit.Test
-import com.xo.iksoks.Square.*
+import com.xo.iksoks.domain.Square.*
+import com.xo.iksoks.domain.IksOks
 
 class IksOksTest{
     class IksOksTest{

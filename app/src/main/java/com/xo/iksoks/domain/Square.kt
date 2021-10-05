@@ -1,4 +1,4 @@
-package com.xo.iksoks
+package com.xo.iksoks.domain
 
 enum class Square(val value : Int, val text: String) {
     EMPTY(0, ""),

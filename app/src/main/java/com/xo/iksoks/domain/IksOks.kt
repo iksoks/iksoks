@@ -1,7 +1,7 @@
-package com.xo.iksoks
+package com.xo.iksoks.domain
 
 import com.xo.iksoks.Constants.BOARD_SIZE
-import com.xo.iksoks.Square.*
+import com.xo.iksoks.domain.Square.*
 
 typealias Matrix = MutableList<MutableList<Int>>
 
