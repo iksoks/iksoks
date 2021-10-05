@@ -2,8 +2,9 @@ package com.xo.iksoks
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import com.xo.iksoks.domain.Square.O
+import com.xo.iksoks.domain.Square.X
 import com.xo.iksoks.ui.game.GameActivity
-import com.xo.iksoks.domain.Square.*
 import org.junit.Rule
 import org.junit.Test
 
