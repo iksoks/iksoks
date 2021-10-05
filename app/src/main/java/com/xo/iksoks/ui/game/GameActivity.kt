@@ -99,6 +99,7 @@ fun Matrix(
                 onClick = {
                     onClick(position)
                 },
+                enabled = list[position] == EMPTY.value,
             ) {
                 Text(
                     text = setupSquareText(list, position),

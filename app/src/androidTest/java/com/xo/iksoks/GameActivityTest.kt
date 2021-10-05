@@ -133,5 +133,16 @@ class GameActivityTest{
             .assertIsDisplayed()
     }
 
+    @Test
+    fun shouldDisableSquareWhenAlreadyClicked() {
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .assertIsNotEnabled()
+    }
+
 
 }
