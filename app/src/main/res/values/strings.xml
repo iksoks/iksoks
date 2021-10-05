@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">IksOks</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="button">Button</string>
+    <string name="reset">Reset</string>
+    <string name="gameWon">%s WON!</string>
+    <string name="draw">DRAW!</string>
+    <string name="please_choose_square">Please choose a square.</string>
+    <string name="matrix">Matrix</string>
 </resources>

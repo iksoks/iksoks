@@ -15,10 +15,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.xo.iksoks.Constants
+import com.xo.iksoks.R
 import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.domain.Square
 import com.xo.iksoks.ui.viewmodel.GameViewModel
@@ -54,22 +56,23 @@ private fun Reset(
     Button(
         modifier = Modifier
             .padding(16.dp)
-            .testTag("Button"),
+            .testTag(stringResource(R.string.button)),
         onClick = {
             viewModel.setupMatrix()
         },
     ) {
-        Text(text = "Reset")
+        Text(text = stringResource(R.string.reset))
     }
 }
 
 @Composable
-private fun setupMessage(iksOks: MutableState<IksOks>) =
-    when {
-        iksOks.value.gameWon -> (if (iksOks.value.xPlaying) Square.X.name else Square.O.name) + " WON!"
-        iksOks.value.draw -> "DRAW!"
-        else -> "Please choose a square."
+private fun setupMessage(iksOks: MutableState<IksOks>): String {
+    return when {
+        iksOks.value.gameWon -> stringResource(id = R.string.gameWon, (if (iksOks.value.xPlaying) Square.X.name else Square.O.name))
+        iksOks.value.draw -> stringResource(R.string.draw)
+        else -> stringResource(R.string.please_choose_square)
     }
+}
 
 
 @OptIn(ExperimentalFoundationApi::class)
@@ -80,7 +83,7 @@ fun Matrix(
     onClick: (Int) -> Unit,
 ) {
     LazyVerticalGrid(
-        modifier = Modifier.testTag("Matrix"),
+        modifier = Modifier.testTag(stringResource(R.string.matrix)),
         cells = GridCells.Fixed(Constants.BOARD_SIZE),
         contentPadding = PaddingValues(
             start = 12.dp,
