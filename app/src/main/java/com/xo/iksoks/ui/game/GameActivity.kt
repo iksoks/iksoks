@@ -24,10 +24,11 @@ import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.ui.theme.IksOksTheme
 import com.xo.iksoks.domain.Square.*
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class GameActivity : ComponentActivity() {
-    @ExperimentalFoundationApi
+    @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val game = IksOks().apply { setup() }
