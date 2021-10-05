@@ -106,5 +106,32 @@ class GameActivityTest{
             .assertIsDisplayed()
     }
 
+    @Test
+    fun shouldWinInRowWhenXPlaysOnFirstRow(){
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("3")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("1")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("4")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithTag("2")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithText("Game won: true")
+            .assertIsDisplayed()
+    }
+
 
 }
