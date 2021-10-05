@@ -32,3 +32,12 @@ It's written in Kotlin, using MVVM architecture, Dagger Hilt and Jetpack Compose
 - Add Room DB for storage persistance
 - Better handle landscape orientation
 - Give the user the option to choose the size of the board
+
+
+<img src="https://i.ibb.co/QCS8HLR/1-xo.jpg" width="300">
+
+
+
+
+<img src="https://i.ibb.co/28bg89C/0-xo.jpg" width="300">
+
