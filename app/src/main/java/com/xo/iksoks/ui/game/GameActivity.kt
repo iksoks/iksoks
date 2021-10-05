@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.Button
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,37 +40,15 @@ class GameActivity : ComponentActivity() {
         setContent {
             IksOksTheme {
                 Surface {
-                    val iksOks = viewModel.iksOks
 
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                        val list = remember { iksOks.value.matrix.flatten() }
+                        val iksOks = remember { viewModel.iksOks }
 
-                        LazyVerticalGrid(
-                            modifier = Modifier.testTag("Matrix"),
-                            cells = GridCells.Fixed(BOARD_SIZE),
-                            contentPadding = PaddingValues(
-                                start = 12.dp,
-                                top = 16.dp,
-                                end = 12.dp,
-                                bottom = 16.dp,
-                            ),
-                        ) {
-                            items(list.size) { position ->
-                                Button(
-                                    modifier = Modifier
-                                        .testTag("Square")
-                                        .padding(4.dp)
-                                        .aspectRatio(1f),
-                                    onClick = {},
-                                ) {
-                                    Text(
-                                        text = setupSquareText(list[position]),
-                                        fontWeight = FontWeight.Bold,
-                                        fontSize = 30.sp,
-                                    )
-                                }
-                            }
+                        Matrix(
+                            list = iksOks.value.matrix.flatten(),
+                        ) { position ->
+                            viewModel.play(position = position)
                         }
 
                         Button(
@@ -93,11 +72,50 @@ class GameActivity : ComponentActivity() {
         }
     }
 
-    private fun setupSquareText(
-        value: Int,
-    ) = when (value) {
-        X.value -> X.text
-        O.value -> O.text
-        else -> EMPTY.text
-    }.toString()
 }
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun Matrix(
+    list: List<Int>,
+    onClick: (Int) -> Unit,
+) {
+    LazyVerticalGrid(
+        modifier = Modifier.testTag("Matrix"),
+        cells = GridCells.Fixed(BOARD_SIZE),
+        contentPadding = PaddingValues(
+            start = 12.dp,
+            top = 16.dp,
+            end = 12.dp,
+            bottom = 16.dp,
+        ),
+    ) {
+        items(list.size) { position ->
+            Button(
+                modifier = Modifier
+                    .testTag(position.toString())
+                    .padding(4.dp)
+                    .aspectRatio(1f),
+                onClick = {
+                    onClick(position)
+                },
+            ) {
+                Text(
+                    text = setupSquareText(list, position),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 30.sp,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun setupSquareText(
+    list: List<Int>,
+    position: Int,
+) = when (list[position]) {
+    X.value -> X.text
+    O.value -> O.text
+    else -> EMPTY.text
+}.toString()

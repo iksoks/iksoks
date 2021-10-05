@@ -2,8 +2,8 @@ package com.xo.iksoks
 
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import com.xo.iksoks.domain.Square
 import com.xo.iksoks.ui.game.GameActivity
+import com.xo.iksoks.domain.Square.*
 import org.junit.Rule
 import org.junit.Test
 
@@ -56,21 +56,6 @@ class GameActivityTest{
     }
 
     @Test
-    fun shouldDisplayNineSquaresInMatrix(){
-        composeAndroidTestRule
-            .onAllNodesWithTag("Square")
-            .assertCountEquals(9)
-
-    }
-
-    @Test
-    fun shouldDisplaySquareWithEmptyText(){
-        composeAndroidTestRule
-            .onAllNodesWithText(Square.EMPTY.text)
-            .assertCountEquals(9)
-    }
-
-    @Test
     fun shouldDisplayTextGameWonFalseOnResetClicked(){
         composeAndroidTestRule
             .onNodeWithTag("Button")
@@ -81,6 +66,30 @@ class GameActivityTest{
             .assertIsDisplayed()
     }
 
+    @Test
+    fun shouldDisplaySquareWithTag0(){
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisplaySquareWithTag8(){
+        composeAndroidTestRule
+            .onNodeWithTag("8")
+            .assertIsDisplayed()
+    }
+
+    @Test
+    fun shouldDisplayXWhenClickedOnSquare0(){
+        composeAndroidTestRule
+            .onNodeWithTag("0")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithText(X.text)
+            .assertIsDisplayed()
+    }
 
 
 }

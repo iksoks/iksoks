@@ -3,6 +3,7 @@ package com.xo.iksoks.ui.viewmodel
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.domain.IksOks
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,5 +21,21 @@ class GameViewModel @Inject constructor() : ViewModel() {
         iksOks.value = IksOks().apply {
             setup()
         }
+    }
+
+    fun play(position: Int) {
+        val x = position / BOARD_SIZE
+        val y = position % BOARD_SIZE
+
+        val newIksOks = IksOks(
+            xPlaying = iksOks.value.xPlaying,
+            draw = iksOks.value.draw,
+            gameWon = iksOks.value.gameWon,
+            matrix = iksOks.value.matrix
+        ).apply {
+            play(x, y)
+        }
+
+        iksOks.value = newIksOks
     }
 }
