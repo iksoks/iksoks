@@ -70,6 +70,17 @@ class GameActivityTest{
             .assertCountEquals(9)
     }
 
+    @Test
+    fun shouldDisplayTextGameWonFalseOnResetClicked(){
+        composeAndroidTestRule
+            .onNodeWithTag("Button")
+            .performClick()
+
+        composeAndroidTestRule
+            .onNodeWithText("Game won: false")
+            .assertIsDisplayed()
+    }
+
 
 
 }

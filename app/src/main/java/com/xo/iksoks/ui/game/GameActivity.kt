@@ -30,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class GameActivity : ComponentActivity() {
 
-    val viewModel : GameViewModel by viewModels()
+    val viewModel: GameViewModel by viewModels()
 
     @OptIn(ExperimentalFoundationApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,7 +76,9 @@ class GameActivity : ComponentActivity() {
                             modifier = Modifier
                                 .padding(16.dp)
                                 .testTag("Button"),
-                            onClick = {},
+                            onClick = {
+                                viewModel.setupMatrix()
+                            },
                         ) {
                             Text(text = "Reset")
                         }

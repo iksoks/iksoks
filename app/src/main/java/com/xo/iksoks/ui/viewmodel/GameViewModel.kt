@@ -12,12 +12,13 @@ class GameViewModel @Inject constructor() : ViewModel() {
 
     val iksOks: MutableState<IksOks> = mutableStateOf(IksOks())
 
-
     init {
         setupMatrix()
     }
 
-    private fun setupMatrix() {
-        iksOks.value = IksOks().apply { setup() }
+    fun setupMatrix() {
+        iksOks.value = IksOks().apply {
+            setup()
+        }
     }
 }
