@@ -6,7 +6,6 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.Surface
-import androidx.lifecycle.SavedStateViewModelFactory
 import com.xo.iksoks.ui.theme.IksOksTheme
 import com.xo.iksoks.ui.viewmodel.GameViewModel
 import dagger.hilt.android.AndroidEntryPoint

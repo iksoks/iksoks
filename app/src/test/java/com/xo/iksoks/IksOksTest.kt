@@ -5,6 +5,7 @@ import org.junit.Before
 import org.junit.Test
 import com.xo.iksoks.domain.Square.*
 import com.xo.iksoks.domain.IksOks
+import com.xo.iksoks.domain.Square.Companion.BOARD_SIZE
 
 class IksOksTest{
     class IksOksTest{
@@ -28,7 +29,7 @@ class IksOksTest{
 
         @Test
         fun shouldInitializeMatrixSizeToThreeOnCreation(){
-            assertThat(Constants.BOARD_SIZE).isEqualTo(3)
+            assertThat(BOARD_SIZE).isEqualTo(3)
         }
 
         @Test
