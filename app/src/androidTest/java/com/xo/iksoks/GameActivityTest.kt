@@ -136,6 +136,56 @@ class GameActivityTest {
 
     @Test
     fun shouldDisplayDrawAfterNinePlaysAsDraw() {
+        draw()
+
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.draw))
+                .assertIsDisplayed()
+        }
+    }
+
+
+
+    @Test
+    fun shouldDraAfterWinningAndResetIsClicked() {
+        winInRow0()
+
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.reset))
+                .performClick()
+        }
+
+        draw()
+
+        composeAndroidTestRule.apply {
+            onNodeWithText(activity.getString(R.string.draw))
+        }
+
+    }
+
+
+    private fun winInRow0() {
+
+        composeAndroidTestRule.apply {
+
+            onNodeWithTag("0")
+                .performClick()
+
+            onNodeWithTag("3")
+                .performClick()
+
+            onNodeWithTag("1")
+                .performClick()
+
+            onNodeWithTag("4")
+                .performClick()
+
+            onNodeWithTag("2")
+                .performClick()
+        }
+    }
+
+    private fun draw() {
         composeAndroidTestRule.apply {
 
             onNodeWithTag("0")
@@ -165,30 +215,6 @@ class GameActivityTest {
             onNodeWithTag("7")
                 .performClick()
 
-
-            onNodeWithText(activity.getString(R.string.draw))
-                .assertIsDisplayed()
-        }
-    }
-
-    private fun winInRow0() {
-
-        composeAndroidTestRule.apply {
-
-            onNodeWithTag("0")
-                .performClick()
-
-            onNodeWithTag("3")
-                .performClick()
-
-            onNodeWithTag("1")
-                .performClick()
-
-            onNodeWithTag("4")
-                .performClick()
-
-            onNodeWithTag("2")
-                .performClick()
         }
     }
 
