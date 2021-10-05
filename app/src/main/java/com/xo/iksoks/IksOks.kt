@@ -3,11 +3,13 @@ package com.xo.iksoks
 import com.xo.iksoks.Constants.BOARD_SIZE
 import com.xo.iksoks.Square.*
 
+typealias Matrix = MutableList<MutableList<Int>>
+
 data class IksOks(
     var gameWon: Boolean = false,
     var xPlaying: Boolean = true,
     var draw: Boolean = false,
-    var matrix: MutableList<MutableList<Int>> = mutableListOf(),
+    var matrix: Matrix = mutableListOf(),
 ) {
 
     fun setup() {
