@@ -4,9 +4,12 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.xo.iksoks.domain.IksOks
 import com.xo.iksoks.domain.Square.Companion.BOARD_SIZE
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -19,28 +22,31 @@ class GameViewModel @Inject constructor(
     )
 
     fun setupMatrix() {
-        iksOks.value = IksOks().apply {
-            setup()
-            savedStateHandle.set(CURRENT_IKSOKS, this)
+        viewModelScope.launch(Dispatchers.IO) {
+            iksOks.value = IksOks().apply {
+                setup()
+                savedStateHandle.set(CURRENT_IKSOKS, this)
+            }
         }
     }
 
     fun play(position: Int) {
-        val x = position / BOARD_SIZE
-        val y = position % BOARD_SIZE
+        viewModelScope.launch(Dispatchers.IO) {
+            val x = position / BOARD_SIZE
+            val y = position % BOARD_SIZE
 
-        IksOks(
-            xPlaying = iksOks.value.xPlaying,
-            draw = iksOks.value.draw,
-            gameWon = iksOks.value.gameWon,
-            matrix = iksOks.value.matrix
-        ).apply {
-            play(x, y)
-        }.also {
-            iksOks.value = it
-            savedStateHandle.set(CURRENT_IKSOKS, it)
+            IksOks(
+                xPlaying = iksOks.value.xPlaying,
+                draw = iksOks.value.draw,
+                gameWon = iksOks.value.gameWon,
+                matrix = iksOks.value.matrix
+            ).apply {
+                play(x, y)
+            }.also {
+                iksOks.value = it
+                savedStateHandle.set(CURRENT_IKSOKS, it)
+            }
         }
-
     }
 
     companion object {
